@@ -10,7 +10,7 @@ If given a large number, it will respond with an error, until we can later optim
 
 Version
 --------
-Version 0.1.0
+Version 0.1.1
 
 
 Build
