@@ -8,6 +8,10 @@ If given a negative number, it will respond with an appropriate error.
 
 If given a large number, it will respond with an error, until we can later optimize the function.
 
+Version
+--------
+Version 0.1.0
+
 
 Build
 ------
