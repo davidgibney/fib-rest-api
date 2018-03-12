@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 """
-Fibonacci REST API
+Fibonacci REST API with Flask
 """
 
 import json
@@ -9,6 +9,8 @@ import sys
 import os
 import time
 
+from flask import Flask, request
+app = Flask(__name__)
 
 LOGGER = logging.getLogger()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
@@ -42,12 +44,26 @@ the Fibonacci calculation function (currently a slow O(n) function.)"
     return result[:n+1]
 
 
+#################################
+############# FLASK #############
+#################################
+@app.route('/')
+def home():
+    return 'Please see the project README.md for instructions on usage.'
+
+@app.route('/fib')
+def flask_fib():
+    n = int(request.args.get('n'))
+    return str(calc_fib(n))
+
+
 ##################################
 ############## MAIN ##############
 ##################################
 if __name__ == "__main__":
     try:
-        print(calc_fib(5))
+        app.run(host='0.0.0.0', port=80)
+
     except Exception as oops:
         LOGGER.error(oops)
         LOGGER.error(str(sys.exc_info()[0]))
